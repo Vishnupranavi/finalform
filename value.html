@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Form Validation</title>
+        <style>
+           
+            .header
+            {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                position: fixed;
+                width: 100vw;
+                height: 70px;
+                background-color: lightgreen;
+            }
+            
+            .header #box
+            {
+                margin-left: 1rem;
+                font-size: large;
+                font-weight: bold;
+                font-style: oblique;
+            }
+            .header a
+            {
+                text-decoration: none;
+                width: 100px;
+                height: 30px;
+                border-radius: 1rem;
+                background-color: dodgerblue;
+                color: white;
+                text-align: center;
+                margin-right: 1rem;
+            }
+            .center {
+                position: relative;
+                bottom: -100px;
+                margin: auto;
+                width: 90%;
+                height: 200px;
+           }
+           table,th,td{
+               border:2px solid red;
+           }
+
+            
+        </style>
+    </head>
+    <body>
+        <form id="create-form" action="index.html" method="POST"></form>
+      
+        <section class="header">
+            <div id="box"></div>
+            <a href= 'signin.html'>Logout</a>
+        </section>
+       
+        <script>
+            var x = localStorage.getItem("unname");
+            document.getElementById("box").textContent = 'welcome, ' + x ;
+        </script>
+     <form>
+       <table class="center">
+            <caption><b>Details</b></caption>
+             <tr>
+                <th><label for="name">Firstname</th>
+                <td id = "name"></td>
+            </tr>
+            <tr>
+                <th><label for="Emailid">Email:</label></th>
+                <td id="email"></td>
+            </tr>
+        </table>
+    </form>
+    </body>
+    <script>
+        document.getElementById("name").textContent=localStorage.getItem('username');
+        document.getElementById("email").innerHTML=x;
+        var x = localStorage.getItem("unname");
+        document.getElementById("box").textContent = 'welcome, ' + x ;
+    </script>
+</html>

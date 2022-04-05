@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Welcome to Signin page</title>
+  </head>
+  <style>
+  *{
+    padding: 0;
+    margin:0;
+    box-sizing: border-box;
+  }
+  body{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    min-height: 100vh;
+    background-color: white;
+  }
+  #create-account-form{
+    width:400px;
+    padding: 20px;
+    text-transform: uppercase;
+    background-color: grey;
+  }
+  .title{
+    margin-bottom: 10px;
+  
+  }
+  .input-group{
+    margin: 20px 0px;
+    position: relative;
+  }
+  
+  .input-group label{
+    display: inline-block;
+    margin-bottom: 5px;
+  }
+  
+  .input-group input{
+    display: block;
+    width: 100%;
+    padding: 10px;
+  }
+  .input-group check{
+    display:inline;
+  }
+  .error input{
+    border:3px solid red;
+  }
+  .success input{
+     border: 3px solid green;
+  }
+  .input-group i{
+    position: absolute;
+    right:10px;
+    top:35px;
+    visibility: hidden;
+  }
+  .success i.fa-check-circle{
+    visibility: visible;
+    color:green;
+  }
+  .error i.fa-exclamation-circle{
+    visibility: visible;
+    color: red;
+  }
+  .input-group p{
+    color: red;
+    font-size: 15px;
+    visibility: hidden;
+  }
+  .error p{
+    visibility: visible;
+  }
+ 
+  
+  .btn{
+    width:100%;
+    padding:10px;
+    background-color: chocolate;
+    font-size: 20px;
+    color:white;
+    text-transform:uppercase;
+    border: none;
+  }
+ 
+  </style>
+  <body>
+    <form id="create-account-form" action="value.html" method="GET" onclick="validateForm()">
+       <div class="title">
+         <h2>Sign-in</h2>
+       </div>
+        <!-- username -->
+        <div class="input-group">
+           <label for="username">Name</label>
+           <input type="text" name="username" value="" id="username" placeholder="Name">
+           <i class="fas fa-check-circle"></i>
+           <i class="fas fa-exclamation-circle"></i>
+           <p>Error Message</p>
+        </div>
+       <!-- password -->
+       <div class="input-group">
+        <label for="password">Password</label>
+        <input type="password" name="password" value="" id="password" placeholder="Password">
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <p>Error Message</p>
+     </div>
+     <!-- login -->
+     <button name="button" class="btn" onclick="validateForm()">Login</button>
+     <script>
+       var form=document.getElementById('create-account-form');
+       var usernameInput=document.getElementById('username');
+       var PasswordInput=document.getElementById('password');
+       form.addEventListener('submit',(event)=>{
+   
+          validateForm();
+          if(isFormValid()==true){
+            form.submit();
+          }else{
+              event.preventDefault();
+          }
+        });
+        // prevent submit form even one field is not valid
+        function isFormValid(){
+        const inputContainers=form.querySelectorAll('.input-group');
+        let result=true;
+        inputContainers.forEach((container)=>{
+          if(container.classList.contains('error')){
+            result=false;
+          }
+        });
+        return result;
+      }
+      function validateForm() {
+         //username
+            if(usernameInput.value.trim()==''){
+          setError(usernameInput,'Name cannot be Empty');
+        }
+        else if(usernameInput.value.trim().length>15){
+            setError(usernameInput,'Name must be max 15 Characters');
+            
+        }
+        else{
+          setSuccess(usernameInput);
+          localStorage.setItem('username',usernameInput.value);
+        }
+        //password
+        if(PasswordInput.value.trim()==''){
+          setError(PasswordInput,'Password cannot be Empty');
+        }
+        else if(PasswordInput.value.trim().length<6||PasswordInput.value.trim().length>20){
+          setError(PasswordInput,'Password Must be Between 6 and 20 characters');
+        }
+        else{
+          setSuccess(PasswordInput);
+        }
+
+        }
+        function setError(element,errorMessage){
+        
+        const parent=element.parentElement;
+       
+        if(parent.classList.contains('success')){
+          parent.classList.remove('success');
+        }
+        parent.classList.add('error');
+        const paragraph=parent.querySelector('p');
+        paragraph.textContent=errorMessage;
+      }
+      function setSuccess(element){
+        const parent=element.parentElement;
+        if(parent.classList.contains('error')){
+          parent.classList.remove('error');
+        }
+        parent.classList.add('success');
+        // const paragraph=parent.querySelector('p');
+        // paragraph.textContent=successMessage;
+      }
+
+
+     </script>
+     
+     </form>
+    </body>
+ </html>

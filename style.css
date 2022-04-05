@@ -1,0 +1,82 @@
+*{
+    padding: 0;
+    margin:0;
+    box-sizing: border-box;
+  }
+  body{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    min-height: 100vh;
+    background-color: white;
+  }
+  #create-account-form{
+    width:400px;
+    padding: 20px;
+    text-transform: uppercase;
+    background-color: grey;
+  }
+  .title{
+    margin-bottom: 10px;
+  
+  }
+  .input-group{
+    margin: 20px 0px;
+    position: relative;
+  }
+  
+  .input-group label{
+    display: inline-block;
+    margin-bottom: 5px;
+  }
+  
+  .input-group input:not(input[type='checkbox']){
+    display: block;
+    width: 100%;
+    padding: 10px;
+  }
+  input[type="checkbox"]{
+    display: inline;
+  }
+  .checkBox{
+    display: inline;
+  }
+  .error input{
+    border:3px solid red;
+  }
+  .success input{
+     border: 3px solid green;
+  }
+  .input-group i{
+    position: absolute;
+    right:10px;
+    top:35px;
+    visibility: hidden;
+  }
+  .success i.fa-check-circle{
+    visibility: visible;
+    color:green;
+  }
+  .error i.fa-exclamation-circle{
+    visibility: visible;
+    color:rgb(158, 45, 45);
+  }
+  .input-group p{
+    color: rgb(158, 45, 45);
+    font-size: 15px;
+    visibility: hidden;
+  }
+  .error p{
+    visibility: visible;
+  }
+ 
+  
+  .btn{
+    width:100%;
+    padding:10px;
+    background-color: chocolate;
+    font-size: 20px;
+    color:white;
+    text-transform:uppercase;
+    border: none;
+  }
